@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>elvis67, езикови курсове, демо</title>
+<meta name="theme-color" content="#0f2747">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#0f2747;--dark2:#16365f;--dark3:#091a31;--acc:#19b5a5;--amb:#f59e0b;--btn:#0b7f75;--btn2:#08665e;--ink:#17212f;--ink2:#566275;--soft:#f3f7f9;--line:#dbe4ea;--green:#1f8a55;--t:'Inter',system-ui,sans-serif;--r:8px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.65 var(--t);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,h4,p{margin:0}a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.wrap{width:min(1180px,100% - 48px);margin-inline:auto}
+.ic{width:1.1em;height:1.1em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.lg{height:44px;width:auto;display:block;--l1:#0f2747;--l2:#19b5a5;--l3:#f59e0b}
+.lg.w{--l1:#fff}
+.strip{background:#06121f;color:rgba(255,255,255,.82);font-size:12.5px;text-align:center;padding:7px 16px}
+.strip b{color:#fff;font-weight:600}
+.util{background:var(--soft);border-bottom:1px solid var(--line);font-size:13px;color:var(--ink2)}
+.util .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:8px 0}
+.util span{display:inline-flex;align-items:center;gap:8px;margin-right:22px}
+.util .ic{color:var(--acc)}
+.util .r span:last-child{margin-right:0}
+@media(max-width:700px){.util .r{display:none}.util .wrap{justify-content:center}}
+.hd{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:78px}
+.nl{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.nl a{display:block;padding:12px 15px;font-size:14.5px;font-weight:600;color:var(--ink);border-bottom:2px solid transparent}
+.nl a:hover{color:var(--btn);border-bottom-color:var(--acc)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:var(--r);font:700 14px var(--t);letter-spacing:.03em;cursor:pointer;border:2px solid transparent;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.b1{background:var(--btn);color:#fff;border-color:var(--btn)}
+.b1:hover{background:var(--btn2);border-color:var(--btn2)}
+.b2{background:#fff;color:var(--dark);border-color:var(--dark)}
+.b2:hover{background:var(--dark);color:#fff}
+.b3{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+.b3:hover{background:#fff;color:var(--dark)}
+.hd .btn{padding:11px 22px;font-size:13.5px}
+@media(max-width:960px){.nl{display:none}}
+.hero{position:relative;background:linear-gradient(120deg,var(--dark3) 0%,var(--dark) 55%,var(--dark2) 100%);color:#fff;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 1px,transparent 1px 26px);pointer-events:none}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--acc),var(--amb))}
+.hg{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,80px);align-items:center;padding:clamp(52px,7vw,100px) 0}
+@media(max-width:960px){.hg{grid-template-columns:1fr}}
+.eb{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--btn)}
+.eb::before{content:"";width:28px;height:2px;background:var(--amb)}
+.hero .eb{color:#7fe3d8}
+h1{font-size:clamp(32px,4.4vw,56px);line-height:1.1;font-weight:800;letter-spacing:-.025em;margin-top:18px;max-width:15em}
+.lead{color:rgba(255,255,255,.84);font-size:18px;max-width:54ch;margin-top:20px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.badges{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;font-size:13.5px;color:rgba(255,255,255,.88)}
+.badges span{display:inline-flex;align-items:center;gap:8px}
+.badges .ic{color:#7fe3d8}
+.q{background:#fff;color:var(--ink);border-radius:12px;box-shadow:0 30px 60px -28px rgba(0,0,0,.6);overflow:hidden}
+.q h3{background:var(--soft);padding:18px 24px;font-size:17px;font-weight:700;color:var(--dark);border-bottom:1px solid var(--line)}
+.q h3 small{display:block;font-size:13px;font-weight:500;color:var(--ink2);margin-top:2px}
+.qb{padding:22px 24px 24px;display:grid;gap:14px}
+.qb label{display:grid;gap:6px;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.qb select{font:500 15px var(--t);color:var(--ink);padding:12px 14px;border:1px solid var(--line);border-radius:var(--r);background:#fff;width:100%}
+.qb select:focus{border-color:var(--dark)}
+.qr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qb .btn{width:100%;margin-top:4px}
+.qn{font-size:12.5px;color:var(--ink2);text-align:center}
+.stats{background:#fff;border-bottom:1px solid var(--line)}
+.sg{display:grid;grid-template-columns:repeat(4,1fr)}
+@media(max-width:800px){.sg{grid-template-columns:1fr 1fr}}
+.st{padding:34px 24px;border-right:1px solid var(--line)}
+.st:last-child{border-right:0}
+@media(max-width:800px){.st:nth-child(2){border-right:0}.st:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.st b{display:block;font-size:clamp(28px,3.2vw,40px);line-height:1;font-weight:800;color:var(--dark);letter-spacing:-.02em}
+.st span{display:block;margin-top:10px;font-size:14px;color:var(--ink2);line-height:1.45}
+.sec{padding:clamp(56px,8vw,100px) 0}
+.alt{background:var(--soft);border-block:1px solid var(--line)}
+.h2{font-size:clamp(26px,3.2vw,40px);line-height:1.15;font-weight:800;letter-spacing:-.02em;color:var(--dark);max-width:20em;margin-top:14px}
+.sl{color:var(--ink2);font-size:17px;max-width:60ch;margin-top:14px}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+@media(max-width:900px){.svc{grid-template-columns:1fr}}
+.sv{padding:32px 30px 34px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--dark);border-radius:8px}
+.sv:nth-child(2){border-top-color:var(--acc)}
+.sv:nth-child(3){border-top-color:var(--amb)}
+.sv .no{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--btn)}
+.sv h3{font-size:21px;font-weight:700;color:var(--dark);margin:14px 0 10px;line-height:1.25}
+.sv p{font-size:15px;color:var(--ink2)}
+.sv ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:14.5px}
+.sv li{padding-left:18px;position:relative}
+.sv li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:2px;background:var(--acc)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px}
+.tab{font:600 14.5px var(--t);padding:11px 20px;border-radius:var(--r);border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.tab:hover{border-color:var(--dark);color:var(--dark)}
+.tab[aria-selected="true"]{background:var(--dark);border-color:var(--dark);color:#fff}
+.panel{display:none;margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:30px;grid-template-columns:1.2fr .8fr;gap:30px}
+.panel.on{display:grid}
+@media(max-width:800px){.panel.on{grid-template-columns:1fr;padding:22px}}
+.panel h3{font-size:20px;font-weight:700;color:var(--dark)}
+.panel p{margin-top:8px;color:var(--ink2);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;background:var(--soft)}
+.auth{background:var(--soft);border-left:4px solid var(--amb);border-radius:6px;padding:20px 22px;align-self:start}
+.auth small{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.auth b{display:block;margin-top:8px;font-size:17px;color:var(--dark);line-height:1.35}
+.auth span{display:block;margin-top:8px;font-size:13.5px;color:var(--ink2)}
+.lv{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:40px}
+@media(max-width:900px){.lv{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.lv{grid-template-columns:1fr 1fr}}
+.lvl{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 16px;text-align:center}
+.lvl b{display:block;font-size:26px;font-weight:800;color:var(--dark);line-height:1}
+.lvl span{display:block;margin-top:8px;font-size:13px;color:var(--ink2)}
+.lvl:nth-child(odd){border-bottom:4px solid var(--acc)}
+.lvl:nth-child(even){border-bottom:4px solid var(--amb)}
+.dg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);grid-template-areas:"h c" "l c";column-gap:clamp(28px,6vw,72px);row-gap:28px;align-items:start}
+.dh{grid-area:h;align-self:end}.dc{grid-area:c;width:100%}
+@media(max-width:959px){.dg{grid-template-columns:1fr;grid-template-areas:"h" "c" "l"}.dc,.lc{max-width:480px}}
+.chat{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 22px 44px -26px rgba(15,39,71,.4);display:flex;flex-direction:column}
+.ct{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--dark);color:#fff}
+.av{width:38px;height:38px;border-radius:8px;background:var(--acc);color:#fff;display:grid;place-items:center}
+.ct .n{font-weight:700;font-size:15px}.ct .s{font-size:12px;opacity:.78}
+.on2{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#bff0d6}
+.dot{width:8px;height:8px;border-radius:50%;background:#4ade80}
+.cb{height:380px;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:10px;background:var(--soft);scrollbar-width:thin}
+.bub{max-width:86%;padding:10px 14px;font-size:14.5px;line-height:1.5;border-radius:10px;opacity:0;transform:translateY(6px);animation:rise .35s ease forwards;white-space:pre-line}
+@keyframes rise{to{opacity:1;transform:none}}
+.bub.v{align-self:flex-end;background:var(--dark);color:#fff;border-bottom-right-radius:3px}
+.bub.a{align-self:flex-start;background:#fff;border:1px solid var(--line);border-left:3px solid var(--acc);border-bottom-left-radius:3px}
+.typing{align-self:flex-start;display:flex;gap:4px;padding:13px 15px;background:#fff;border:1px solid var(--line);border-radius:10px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#98a6bb;animation:bl 1.1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.opts{display:flex;flex-direction:column;gap:6px;align-self:stretch}
+.opts button{text-align:left;font:600 13.5px var(--t);color:var(--dark);background:#fff;border:1px solid var(--dark);border-radius:var(--r);padding:10px 12px;cursor:pointer}
+.opts button:hover{background:var(--dark);color:#fff}
+.cf{display:flex;align-items:center;gap:10px;padding:11px 13px;background:#fff;border-top:1px solid var(--line)}
+.fi{flex:1;min-width:0;padding:10px 14px;background:var(--soft);border:1px solid var(--line);border-radius:var(--r);color:var(--ink2);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rp{display:none;align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--dark);border-radius:var(--r);background:#fff;color:var(--dark);font:700 12.5px var(--t);cursor:pointer}
+.rp:hover{background:var(--dark);color:#fff}
+.lc{grid-area:l;width:100%;max-width:400px;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .7s ease}
+.lc.sh{opacity:1;transform:none}
+.lcard{background:#fff;border:1px solid var(--line);border-top:4px solid var(--acc);border-radius:8px;overflow:hidden}
+.lh{display:flex;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--line);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.lh b{color:var(--dark)}
+.lr{display:flex;justify-content:space-between;gap:16px;padding:10px 18px;font-size:14px;font-weight:600;border-bottom:1px solid var(--line)}
+.lr span:first-child{color:var(--ink2);font-weight:500}
+.ls{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;background:#e9f6ef;color:var(--green);font-size:13.5px;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:44px 0 0;padding:0;list-style:none}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+.step{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px 24px}
+.node{width:42px;height:42px;border-radius:8px;display:grid;place-items:center;background:var(--dark);color:#fff;font-weight:800;font-size:16px}
+.step:last-child .node{background:var(--amb);color:#1c1300}
+.step h3{font-size:18px;font-weight:700;color:var(--dark);margin:16px 0 6px}
+.step p{font-size:14.5px;color:var(--ink2);line-height:1.55}
+.faq{margin-top:36px;display:grid;gap:10px;max-width:860px}
+details{background:#fff;border:1px solid var(--line);border-radius:10px}
+summary{list-style:none;cursor:pointer;padding:18px 22px;font-weight:700;color:var(--dark);display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;line-height:1;color:var(--btn);font-weight:600}
+details[open] summary::after{content:"−"}
+details[open] summary{border-bottom:1px solid var(--line)}
+details p{padding:16px 22px 20px;color:var(--ink2);font-size:15px}
+.note{font-size:13px;color:var(--ink2);margin-top:14px}
+.band{background:var(--dark2);color:#fff;border-top:4px solid var(--amb)}
+.bg2{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding:clamp(40px,5vw,60px) 0}
+.band h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.015em;max-width:20em;line-height:1.2}
+.band p{color:rgba(255,255,255,.82);margin-top:10px;max-width:52ch}
+.band .cta{margin:0}
+.mf{background:var(--dark3);color:#fff;padding:0 0 calc(110px + env(safe-area-inset-bottom,0px))}
+.mft{display:grid;grid-template-columns:1fr 2.1fr;gap:clamp(28px,5vw,64px);padding:clamp(44px,6vw,70px) 0 40px;border-bottom:1px solid rgba(255,255,255,.16)}
+@media(max-width:900px){.mft{grid-template-columns:1fr}}
+.mfb p{margin-top:20px;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.78);max-width:38ch}
+.mfc{margin-top:22px;font-size:14px;color:rgba(255,255,255,.7)}
+.mfg{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,40px)}
+@media(max-width:700px){.mfg{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.mfg{grid-template-columns:1fr}}
+.mfg h4{margin:0 0 16px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding-bottom:10px;border-bottom:2px solid var(--acc);display:inline-block}
+.mfg ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.mfg li{position:relative;padding-left:16px;font-size:14.5px;color:rgba(255,255,255,.82);line-height:1.4}
+.mfg li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;background:var(--amb);border-radius:1px}
+.mfs{display:flex;flex-wrap:wrap;gap:10px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.mfs span{padding:8px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:999px;font-size:13.5px;font-weight:500}
+.mfs span:nth-child(3n){border-color:rgba(245,158,11,.8)}
+.mfd{padding-top:24px;display:flex;flex-direction:column;gap:10px;font-size:12.5px;color:rgba(255,255,255,.68);line-height:1.6}
+.mfd b{color:#fff;font-weight:600}
+.fl{position:fixed;z-index:60;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-end;gap:12px;max-width:calc(100% - 28px)}
+.fp{width:min(380px,100vw - 28px);display:none;box-shadow:0 24px 60px -20px rgba(15,39,71,.5)}
+.fp.open{display:flex}
+.fp .cb{height:min(360px,48vh)}
+.fb{width:58px;height:58px;border:0;border-radius:16px;cursor:pointer;background:var(--btn);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -10px rgba(11,127,117,.8)}
+.fb:hover{background:var(--btn2)}
+.fb .ic{width:26px;height:26px}
+@media(prefers-reduced-motion:reduce){.typing i{animation:none}.lc,.bub{transition:none;animation:none;opacity:1;transform:none}html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="logo" viewBox="0 0 196 44">
+  <rect width="44" height="44" rx="11" fill="var(--l1)"/>
+  <path d="M9 12h26a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H21l-7 6v-6H9a3 3 0 0 1-3-3V15a3 3 0 0 1 3-3z" transform="translate(0 -2)" fill="var(--l2)"/>
+  <text x="22" y="26" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="19" fill="#fff">e</text>
+  <text x="54" y="31" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="27" letter-spacing="-.5" fill="var(--l1)">elvis<tspan fill="var(--l3)">67</tspan></text>
+</symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 7h6"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6M17 5a3.2 3.2 0 0 1 0 6M18 14c2.2.6 3.5 2.6 3.5 5"/></symbol>
+</svg>
+
+<div class="strip"><b>Демонстрационна страница от Hackera за elvis67</b> · концепция, текстовете са примерни</div>
+<div class="util"><div class="wrap">
+  <div class="l"><span><svg class="ic"><use href="#i-users"/></svg>Деца, ученици, възрастни и фирми</span><span><svg class="ic"><use href="#i-globe"/></svg>Онлайн и присъствено</span></div>
+  <div class="r"><span><svg class="ic"><use href="#i-book"/></svg>Нива A1–C2</span></div>
+</div></div>
+
+<header class="hd" id="top"><div class="wrap">
+  <a href="#top" aria-label="elvis67"><svg class="lg" viewBox="0 0 196 44" width="196" height="44" role="img" aria-label="elvis67"><use href="#logo"/></svg></a>
+  <ul class="nl"><li><a href="#work">Курсове</a></li><li><a href="#groups">За кого</a></li><li><a href="#levels">Нива</a></li><li><a href="#demo">AI асистент</a></li><li><a href="#faq">Въпроси</a></li></ul>
+  <a class="btn b1" href="#quote">Запиши се</a>
+</div></header>
+
+<section class="hero"><div class="wrap hg">
+  <div>
+    <span class="eb">Езикови курсове</span>
+    <h1>Научи език уверено, в свой ритъм</h1>
+    <p class="lead">Курсове за деца, ученици, възрастни и фирми, онлайн или присъствено. AI асистентът отговаря веднага и насочва към подходящата група.</p>
+    <div class="cta"><a class="btn b1" href="#demo">Говори с асистента <svg class="ic"><use href="#i-arrow"/></svg></a><a class="btn b3" href="#work">Виж курсовете</a></div>
+    <div class="badges"><span><svg class="ic"><use href="#i-check"/></svg>Онлайн и присъствено</span><span><svg class="ic"><use href="#i-check"/></svg>Групово и индивидуално</span><span><svg class="ic"><use href="#i-check"/></svg>Нива по CEFR</span></div>
+  </div>
+  <div class="q" id="quote">
+    <h3>Намери своя курс<small>Избери и задай въпрос на асистента</small></h3>
+    <div class="qb">
+      <label>Език
+        <select id="ql"><option>Английски</option><option>Немски</option><option>Испански</option><option>Френски</option><option>Италиански</option><option>Руски</option></select>
+      </label>
+      <div class="qr">
+        <label>За кого<select id="qg"><option>дете</option><option>тийнейджър</option><option>възрастен</option><option>фирма</option></select></label>
+        <label>Форма<select id="qf"><option>онлайн</option><option>присъствено</option><option>индивидуално</option><option>групово</option></select></label>
+      </div>
+      <button class="btn b1" id="qgo" type="button">Попитай асистента <svg class="ic"><use href="#i-arrow"/></svg></button>
+      <p class="qn">Нивото, графикът и цената се уточняват с екипа на elvis67.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="stats"><div class="wrap sg">
+  <div class="st"><b>6</b><span>езика в демото: английски, немски, испански, френски, италиански и руски</span></div>
+  <div class="st"><b>4</b><span>групи: деца, ученици, възрастни и фирми</span></div>
+  <div class="st"><b>2</b><span>форми на обучение: онлайн и присъствено</span></div>
+  <div class="st"><b>A1–C2</b><span>нива по Общоевропейската езикова рамка</span></div>
+</div></section>
+
+<section class="sec" id="work"><div class="wrap">
+  <span class="eb">Курсове</span>
+  <h2 class="h2">Три начина да учиш езици</h2>
+  <p class="sl">Примерна структура на предложението. Съдържанието се уточнява с elvis67.</p>
+  <div class="svc">
+    <article class="sv"><div class="no">01</div><h3>Групови курсове</h3><p>Малки групи, формирани според нивото и възрастта.</p><ul><li>Деца и ученици</li><li>Възрастни</li><li>Дневни, вечерни и уикенд групи</li><li>Входящ тест за ниво</li></ul></article>
+    <article class="sv"><div class="no">02</div><h3>Индивидуално обучение</h3><p>Програма и темп, съобразени с целите на курсиста.</p><ul><li>Индивидуални занятия</li><li>Полуиндивидуални занятия</li><li>Подготовка за изпит</li><li>Разговорни умения</li></ul></article>
+    <article class="sv"><div class="no">03</div><h3>Обучение за фирми</h3><p>Езикови курсове за екипи, с терминология от сферата на бизнеса.</p><ul><li>Корпоративни групи</li><li>Бизнес език</li><li>В офиса или онлайн</li><li>Отчет за напредъка</li></ul></article>
+  </div>
+</div></section>
+
+<section class="sec alt" id="groups"><div class="wrap">
+  <span class="eb">За кого</span>
+  <h2 class="h2">Курс за всяка възраст и цел</h2>
+  <p class="sl">Избери група, за да видиш какво обикновено се уточнява.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div id="panels"></div>
+  <p class="note">Съдържанието е примерно и ще бъде заменено с реалните курсове на elvis67.</p>
+</div></section>
+
+<section class="sec" id="levels"><div class="wrap">
+  <span class="eb">Нива</span>
+  <h2 class="h2">От първата дума до свободен разговор</h2>
+  <p class="sl">Нивата следват Общоевропейската езикова рамка.</p>
+  <div class="lv">
+    <div class="lvl"><b>A1</b><span>Начално</span></div><div class="lvl"><b>A2</b><span>Елементарно</span></div><div class="lvl"><b>B1</b><span>Средно</span></div>
+    <div class="lvl"><b>B2</b><span>Над средното</span></div><div class="lvl"><b>C1</b><span>Напреднало</span></div><div class="lvl"><b>C2</b><span>Свободно владеене</span></div>
+  </div>
+</div></section>
+
+<section class="sec alt" id="demo">
+  <div class="wrap dg">
+    <div class="dh"><span class="eb">AI асистент</span><h2 class="h2">Родителят пита, асистентът води до преподавател</h2><p class="sl">Примерен разговор за курс по английски за дете. В долния десен ъгъл е и живият уиджет, опитайте с бутоните.</p></div>
+    <div class="dc" id="chatBox"><div class="chat">
+      <div class="ct"><div class="av"><svg class="ic"><use href="#i-book"/></svg></div><div><div class="n">AI асистент на elvis67</div><div class="s">демо</div></div><div class="on2"><span class="dot"></span>онлайн</div></div>
+      <div class="cb" id="cb" role="log" aria-live="polite" aria-label="Демо разговор"></div>
+      <div class="cf"><div class="fi" aria-hidden="true">Напишете съобщение…</div><button class="rp" id="rp" type="button"><svg class="ic"><use href="#i-replay"/></svg>Отначало</button></div>
+    </div></div>
+    <div class="lc" id="lc"><div class="lcard">
+      <div class="lh"><b>Ново запитване</b><span>сега</span></div>
+      <div class="lr"><span>Език</span><span>Английски</span></div>
+      <div class="lr"><span>За кого</span><span>Дете, 9 г.</span></div>
+      <div class="lr"><span>Форма</span><span>Групово, онлайн</span></div>
+      <div class="lr"><span>Ниво</span><span>Начално</span></div>
+      <div class="ls"><span>Следваща стъпка</span><span>Преподавател се свързва</span></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="sec" id="how"><div class="wrap">
+  <span class="eb">Как работим</span>
+  <h2 class="h2">От въпрос до първия урок</h2>
+  <ol class="steps">
+    <li class="step"><div class="node">1</div><h3>Запитване</h3><p>Въпрос в чата или кратка заявка във формата.</p></li>
+    <li class="step"><div class="node">2</div><h3>Ниво</h3><p>Кратък тест определя подходящото ниво.</p></li>
+    <li class="step"><div class="node">3</div><h3>Група</h3><p>Предлагаме група или индивидуален график.</p></li>
+    <li class="step"><div class="node">4</div><h3>Първи урок</h3><p>Онлайн или присъствено, според избора.</p></li>
+  </ol>
+</div></section>
+
+<section class="sec alt" id="faq"><div class="wrap">
+  <span class="eb">Въпроси</span>
+  <h2 class="h2">Често задавани въпроси</h2>
+  <div class="faq">
+    <details open><summary>Как се определя нивото?</summary><p>Обичайно с кратък входящ тест. В демото асистентът обяснява това и насочва към преподавател.</p></details>
+    <details><summary>Има ли онлайн курсове?</summary><p>Концепцията предвижда курсове онлайн и присъствено, групови и индивидуални.</p></details>
+    <details><summary>За кои езици са курсовете?</summary><p>В демото са показани английски, немски, испански, френски, италиански и руски. Конкретният списък ще бъде уточнен с elvis67.</p></details>
+    <details><summary>Колко струва курсът?</summary><p>Цените и графиците не са част от демото. Те се определят от екипа на elvis67.</p></details>
+    <details><summary>Има ли курсове за фирми?</summary><p>Да, като част от концепцията: групи за екипи, онлайн или на място в офиса.</p></details>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap bg2">
+  <div><h2>Първата стъпка е един въпрос в чата</h2><p>Езикови курсове за деца, ученици, възрастни и фирми.</p></div>
+  <div class="cta"><button class="btn b1" id="cr" type="button" style="background:#fff;color:var(--dark);border-color:#fff"><svg class="ic"><use href="#i-replay"/></svg>Пусни демото отново</button></div>
+</div></section>
+
+<footer class="mf">
+  <div class="wrap">
+    <div class="mft">
+      <div class="mfb">
+        <svg class="lg w" viewBox="0 0 196 44" width="196" height="44" role="img" aria-label="elvis67"><use href="#logo"/></svg>
+        <p>Езикови курсове за деца, ученици, възрастни и фирми, онлайн и присъствено.</p>
+        <p class="mfc">Контактите на elvis67 ще бъдат добавени.</p>
+      </div>
+      <div class="mfg">
+        <div><h4>Езици</h4><ul><li>Английски език</li><li>Немски език</li><li>Испански език</li><li>Френски език</li><li>Италиански език</li><li>Руски език</li></ul></div>
+        <div><h4>За деца</h4><ul><li>Английски за деца</li><li>Немски за деца</li><li>Испански за деца</li><li>Руски за деца</li><li>Подготовка за ученици</li></ul></div>
+        <div><h4>За възрастни</h4><ul><li>Дневни курсове</li><li>Вечерни курсове</li><li>Уикенд курсове</li><li>Интензивни курсове</li><li>Разговорен курс</li></ul></div>
+        <div><h4>Форми</h4><ul><li>Онлайн</li><li>Присъствено</li><li>Индивидуално</li><li>Полуиндивидуално</li><li>Групово</li></ul></div>
+        <div><h4>За фирми</h4><ul><li>Корпоративно обучение</li><li>Бизнес език</li><li>Специализирана терминология</li><li>Обучение в офиса</li></ul></div>
+        <div><h4>Нива</h4><ul><li>A1 и A2</li><li>B1 и B2</li><li>C1 и C2</li><li>Входящ тест</li></ul></div>
+      </div>
+    </div>
+    <div class="mfs" aria-label="Теми"><span>Езикови курсове</span><span>Курсове за деца</span><span>Курсове за възрастни</span><span>Онлайн обучение</span><span>Индивидуални занятия</span><span>Фирмено обучение</span><span>Нива по CEFR</span><span>elvis67</span></div>
+    <div class="mfd">
+      <div>© elvis67</div>
+      <div><b>Демонстрационна страница</b> с примерен разговор, изготвена от Hackera за elvis67. Текстовете, езиците и формите на обучение са примерни и ще бъдат уточнени с клиента. Цени и графици не са включени.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="fl" id="fl">
+  <div class="chat fp open" id="fp">
+    <div class="ct"><div class="av"><svg class="ic"><use href="#i-book"/></svg></div><div><div class="n">AI асистент</div><div class="s">elvis67</div></div><div class="on2"><span class="dot"></span>онлайн</div></div>
+    <div class="cb" id="wb" role="log" aria-live="polite" aria-label="Чат уиджет"></div>
+  </div>
+  <button class="fb" id="fb" type="button" aria-label="Отвори или затвори чата" aria-expanded="true"><svg class="ic"><use href="#i-chat"/></svg></button>
+</div>
+
+<script>
+const WEL='Здравейте! Аз съм AI асистентът на elvis67. Кой език искате да учите?';
+const OPTS=['Търся курс за дете.','Интересувам се от курс за възрастни.','Има ли онлайн обучение?','Търся езиков курс за фирма.'];
+const ANS=[
+'С удоволствие. Кажете ми за кой език става дума и на каква възраст е детето. Преподавател ще определи подходящото ниво и група.',
+'Курсовете за възрастни могат да са групови или индивидуални, дневни, вечерни или в уикенда. Кажете ми езика и дали вече имате познания, за да насоча към подходящо ниво.',
+'Да, концепцията предвижда обучение онлайн и присъствено, групово и индивидуално. Кажете ми кой формат предпочитате.',
+'За фирми предвиждаме групи за екипи, онлайн или в офиса, с терминология от сферата на бизнеса. Кажете ми езика и приблизителния брой участници.'];
+const demo=[
+['v','Здравейте, търся курс по английски за дъщеря ми, на 9 години.'],
+['a',WEL+'\nРазбирам. Търсите ли групов или индивидуален курс?'],
+['v','Групов, може и онлайн.'],
+['a','Добре. Нивото се определя с кратък тест, а преподавател ще предложи подходяща група и график. Детето учило ли е английски досега?'],
+['v','Не, започва от нулата.'],
+['a','Тогава е подходящо начално ниво A1. Цената и графикът се уточняват от екипа на elvis67, затова няма да давам числа от чата.'],
+['v','Добре, запишете ни за разговор.'],
+['a','Готово, записах запитване за групов онлайн курс по английски за дете на 9 години, начално ниво. Преподавател ще се свърже с Вас. Моля, не изпращайте лични данни в чата.']];
+const G={
+kid:{tab:'Деца',title:'Курсове за деца',text:'Обучение, съобразено с възрастта и нивото на детето.',items:['Английски','Немски','Испански','Руски','Групово','Индивидуално'],box:'Какво уточняваме',note:'Възраст, предишен опит с езика и желана форма: онлайн, присъствено, групово или индивидуално.',name:'дете'},
+stu:{tab:'Ученици',title:'Курсове за ученици и гимназисти',text:'Подкрепа за училище и подготовка за изпити.',items:['Всички езици','Подготовка за изпит','Разговорни умения','Групово','Индивидуално'],box:'Какво уточняваме',note:'Клас, цел на курса и нужно ниво.',name:'тийнейджър'},
+adu:{tab:'Възрастни',title:'Курсове за възрастни',text:'Дневни, вечерни и уикенд курсове за начинаещи и напреднали.',items:['Дневни групи','Вечерни групи','Уикенд групи','Интензивни','Индивидуално'],box:'Какво уточняваме',note:'Цел, текущо ниво и удобно време.',name:'възрастен'},
+biz:{tab:'Фирми',title:'Обучение за фирми',text:'Езикови курсове за екипи, онлайн или в офиса.',items:['Бизнес език','Специализирана терминология','В офиса','Онлайн'],box:'Какво уточняваме',note:'Брой участници, ниво и сфера на дейност.',name:'фирма'}};
+function el(c,t){const e=document.createElement('div');e.className=c;if(t)e.textContent=t;return e}
+function bub(b,w,t){b.appendChild(el('bub '+w,t));b.scrollTop=b.scrollHeight}
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const tabs=document.getElementById('tabs'),panels=document.getElementById('panels');
+Object.keys(G).forEach((k,i)=>{const d=G[k];
+const b=document.createElement('button');b.type='button';b.className='tab';b.id='t-'+k;b.setAttribute('role','tab');b.setAttribute('aria-selected',i===0);b.setAttribute('aria-controls','p-'+k);b.textContent=d.tab;tabs.appendChild(b);
+const p=document.createElement('div');p.className='panel'+(i===0?' on':'');p.id='p-'+k;p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby','t-'+k);
+const l=document.createElement('div');const h=document.createElement('h3');h.textContent=d.title;const pp=document.createElement('p');pp.textContent=d.text;const ch=el('chips');d.items.forEach(x=>{const s=document.createElement('span');s.textContent=x;ch.appendChild(s)});l.append(h,pp,ch);
+const a=el('auth');a.innerHTML='<small></small><b>Съвет от преподавател</b><span></span>';a.querySelector('small').textContent=d.box;a.querySelector('span').textContent=d.note;
+p.append(l,a);panels.appendChild(p);
+b.onclick=()=>{tabs.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));panels.querySelectorAll('.panel').forEach(x=>x.classList.toggle('on',x===p))}});
+const wb=document.getElementById('wb'),fp=document.getElementById('fp'),fb=document.getElementById('fb');
+function wOpts(){const o=el('opts');OPTS.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.textContent=(i+1)+'. '+t;b.onclick=()=>say(t,ANS[i],o);o.appendChild(b)});wb.appendChild(o);wb.scrollTop=wb.scrollHeight}
+function say(q,a,o){wb.querySelectorAll('.opts').forEach(x=>x.remove());if(o)o.remove();bub(wb,'v',q);const ty=el('typing');ty.innerHTML='<i></i><i></i><i></i>';wb.appendChild(ty);wb.scrollTop=wb.scrollHeight;setTimeout(()=>{ty.remove();bub(wb,'a',a);wOpts()},reduced?0:800)}
+bub(wb,'a',WEL);wOpts();
+fb.onclick=()=>{const o=fp.classList.toggle('open');fb.setAttribute('aria-expanded',o)};
+if(innerWidth<700){fp.classList.remove('open');fb.setAttribute('aria-expanded','false')}
+document.getElementById('qgo').onclick=()=>{
+const l=document.getElementById('ql').value,g=document.getElementById('qg').value,f=document.getElementById('qf').value;
+fp.classList.add('open');fb.setAttribute('aria-expanded','true');
+say('Търся курс по '+l.toLowerCase()+' за '+g+', форма: '+f+'.','Благодаря. Преподавател на elvis67 ще определи нивото и подходящата група за курса по '+l.toLowerCase()+'. Графикът и цената се уточняват от екипа. Искате ли да запиша запитването? Моля, не изпращайте лични данни в чата.')};
+let run=false;
+function start(){if(run)return;run=true;const b=document.getElementById('cb'),rp=document.getElementById('rp'),lc=document.getElementById('lc');b.innerHTML='';lc.classList.remove('sh');rp.style.display='none';let i=0;
+function step(){if(i>=demo.length){run=false;rp.style.display='inline-flex';setTimeout(()=>lc.classList.add('sh'),250);return}
+const m=demo[i];if(reduced){bub(b,m[0],m[1]);i++;step();return}
+const t=el('typing');t.innerHTML='<i></i><i></i><i></i>';b.appendChild(t);b.scrollTop=b.scrollHeight;
+setTimeout(()=>{t.remove();bub(b,m[0],m[1]);i++;setTimeout(step,m[0]==='a'?700:450)},m[0]==='a'?850:500)}
+step()}
+document.getElementById('rp').onclick=start;
+document.getElementById('cr').onclick=()=>{document.getElementById('chatBox').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(start,600)};
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){setTimeout(start,500);o.disconnect()}}),{threshold:.4}).observe(document.querySelector('#chatBox .chat'));
+</script>
+</body>
+</html>
